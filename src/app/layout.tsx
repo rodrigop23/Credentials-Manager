@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs";
+import { esMX } from "@clerk/localizations";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -20,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider afterSignOutUrl={"/sign-in"}>
+    <ClerkProvider afterSignOutUrl={"/sign-up"} localization={esMX}>
       <html lang="en" suppressHydrationWarning>
         <body
           className={cn(
