@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Análisis de código estático
 
-## Getting Started
+## Definición
+El análisis de código estático, también conocido como análisis de código fuente, es una técnica clave para garantizar la seguridad en el desarrollo de software. A través de herramientas automatizadas, se examina el código sin necesidad de ejecutarlo.
 
-First, run the development server:
+Aunque se espera que estas herramientas identifiquen vulnerabilidades de seguridad con precisión, en la práctica suelen actuar como asistentes para los analistas. Ayudan a focalizarse en las secciones críticas del código y a detectar errores de manera más eficiente. Algunas de estas herramientas están integradas en los entornos de desarrollo (IDE), proporcionando retroalimentación en tiempo real a los desarrolladores durante el proceso de desarrollo, lo que es esencial para detectar problemas de seguridad en las etapas iniciales del ciclo de vida del software [1].
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+El objetivo principal del análisis de código estático es identificar errores que puedan causar el fallo prematuro o comportamientos inesperados en el programa, como:
+- Acceder a elementos fuera de los límites de una matriz
+- Referenciar punteros nulos o causar pérdidas de memoria (memory leaks)
+- Desbordamientos o subdesbordamientos de búfer
+- Uso de variables o punteros sin inicializar
+- Operaciones aritméticas inválidas
+- Bucles infinitos
+- Llamadas a funciones que no retornan
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Aunque muchas de estas fallas pueden ser descubiertas a través de pruebas de software, el análisis de código estático ofrece un enfoque prometedor para mejorar la confiabilidad y corrección del software. Sin embargo, las pruebas continúan siendo un componente crucial en el desarrollo [2].
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Ventajas y desventajas
+Ventajas:
+- No requiere la ejecución del código
+- Puede aplicarse en etapas tempranas del desarrollo
+- Los resultados no dependen de datos de entrada específicos
+- Los hallazgos pueden aplicarse a futuras ejecuciones
+- Es más económico y rápido
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Desventajas:
+- Alta tasa de falsos positivos
+- Usa aproximaciones que no garantizan precisión total
+- No corrige funcionalmente el programa
 
-## Learn More
+## Técnicas
 
-To learn more about Next.js, take a look at the following resources:
+- **Análisis de sintaxis:** Verifica que el código cumpla con las reglas del lenguaje de programación, detectando errores como paréntesis o llaves mal colocadas, declaraciones incorrectas de variables o el uso inadecuado de palabras clave.
+  
+- **Análisis de datos y flujo de control:** Examina cómo se manejan los datos y el flujo de ejecución en el programa, buscando problemas como variables sin inicializar, condiciones redundantes o bucles infinitos.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Análisis de seguridad:** Identifica vulnerabilidades en el código frente a problemas como inyecciones SQL, desbordamientos de búfer o la falta de validación de datos.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Análisis de dependencias:** Identifica las relaciones entre módulos, clases o componentes del código, promoviendo una mejor modularidad y detectando acoplamientos excesivos.
 
-## Deploy on Vercel
+- **Análisis de calidad del código:** Evalúa la calidad del código a través de métricas como la complejidad ciclomática, la duplicación de código o la profundidad de anidación.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Experimentación
+  - Sonarqube Local.
+  - SonarCloud de forma manual.
+  - SonarCloud en Github Actions simulando CI/CD.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Referencias
+1. https://owasp.org/www-community/controls/Static_Code_Analysis
+2. Static Analysis: A Survey of Techniques and Tools
+3. https://docs.sonarcloud.io/
