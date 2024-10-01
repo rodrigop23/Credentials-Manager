@@ -16,7 +16,7 @@ jobs:
       - name: SonarQube Scan 1
         uses: sonarsource/sonarqube-scan-action@master
         env:
-          SONAR_TOKEN: f6736c1eb1f23239d4f52703ad42a3e6eee3b9cf  # analysis token associated to your project
+          SONAR_TOKEN: 0df49d9f55287af0e04a9c06aef4f51a2444a498  # analysis token associated to your project
           SONAR_HOST_URL: https://sonarcloud.io
       # If you wish to fail your job when the Quality Gate is red, uncomment the
       # following lines. This would typically be used to fail a deployment.
